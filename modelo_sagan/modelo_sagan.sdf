@@ -1,0 +1,334 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name='modelo_sagan'>
+	<static>false</static>
+    <link name='base_link'>
+      <pose frame=''>0 0 1 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.793701</mass>
+        <inertia>
+          <ixx>0.000</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.000</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.000</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name='Sup_left'>
+      <pose frame=''>-0.073147 -0.005869 0.984679 -1.5708 -0.9052 1.5708</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.396484</mass>
+           <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='Sup_left_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/Sup_left.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Sup_left_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/Sup_left.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='sup_left' type='revolute'>
+      <child>Sup_left</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>1 1e-06 2e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='BL_wheel'>
+      <pose frame=''>0.141423 0.162996 0.865835 1.5708 0.747 1.5708</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.247713</mass>
+            <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='BL_wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/BL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='BL_wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/BL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='BLW_sup' type='revolute'>
+      <child>BL_wheel</child>
+      <parent>Sup_left</parent>
+      <axis>
+        <xyz>1 -4e-06 -3e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='FL_wheel'>
+      <pose frame=''>0.141423 -0.192731 0.916689 1.57079 0.3991 1.5708</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.247713</mass>
+             <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='FL_wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/FL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='FL_wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/FL_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='FLW_sup' type='revolute'>
+      <child>FL_wheel</child>
+      <parent>Sup_left</parent>
+      <axis>
+        <xyz>1 4e-06 9e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='Sup_right'>
+      <pose frame=''>0 0 1 -1.5708 0.98291 -1.5708</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.396484</mass>
+           <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='Sup_right_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/Sup_right.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Sup_right_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/Sup_right.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='sup_right' type='revolute'>
+      <child>Sup_right</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>1 -1e-06 -2e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='BR_wheel'>
+      <pose frame=''>-0.1392 0.172375 0.878897 -1.5708 -0.810417 1.57079</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>0.247713</mass>
+            <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='BR_wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/BR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='BR_wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/BR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='BRW_sup' type='revolute'>
+      <child>BR_wheel</child>
+      <parent>Sup_right</parent>
+      <axis>
+        <xyz>1 -6e-06 3e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='FR_wheel'>
+      <pose frame=''>-0.1392 -0.186224 0.901985 -1.5708 -0.149417 1.5708</pose>
+      <inertial>
+        <pose frame=''>0 0 0</pose>
+        <mass>0.247713</mass>
+             <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='FR_wheel_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/FR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='FR_wheel_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modelo_sagan/meshes/FR_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='FRW_sup' type='revolute'>
+      <child>FR_wheel</child>
+      <parent>Sup_right</parent>
+      <axis>
+        <xyz>1 -2e-06 5e-06</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+  </model>
+</sdf>
+
