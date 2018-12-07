@@ -1,0 +1,3 @@
+/home/emanoel/catkin_ws/src/Tracking/sagan_plugin/build/CMakeFiles/edit_cache.dir
+/home/emanoel/catkin_ws/src/Tracking/sagan_plugin/build/CMakeFiles/rebuild_cache.dir
+/home/emanoel/catkin_ws/src/Tracking/sagan_plugin/build/CMakeFiles/sagan_push.dir
