@@ -1,0 +1,28 @@
+<?xml version="1.0"?> 
+<sdf version="1.4">
+  <world name="default">
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+	
+   <model name="sagan">
+
+    <include>
+      <uri>model://modelo_sagan</uri>
+    </include>
+   
+	 <!-- Attach the plugin to this model -->      
+	<plugin name="sagan_plugin" filename="libsagan_plugin.so">
+  	<velocity>2</velocity>
+	</plugin>
+	<pose>0 0 0 0 0 0</pose> 
+    
+	</model>   	    
+  </world>
+</sdf>
