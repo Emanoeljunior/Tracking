@@ -31,6 +31,8 @@ ros/subscribe_options.h
 /home/emanoel/catkin_ws/src/Tracking/sagan_plugin/ros/subscribe_options.h
 std_msgs/Float32.h
 /home/emanoel/catkin_ws/src/Tracking/sagan_plugin/std_msgs/Float32.h
+geometry_msgs/Quaternion.h
+/home/emanoel/catkin_ws/src/Tracking/sagan_plugin/geometry_msgs/Quaternion.h
 
 /opt/ros/kinetic/include/boost_161_condition_variable.h
 boost/thread/detail/platform.hpp
@@ -90,6 +92,22 @@ boost/date_time/posix_time/posix_time_duration.hpp
 boost/config/abi_prefix.hpp
 -
 boost/config/abi_suffix.hpp
+-
+
+/opt/ros/kinetic/include/geometry_msgs/Quaternion.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
 -
 
 /opt/ros/kinetic/include/ros/advertise_options.h
