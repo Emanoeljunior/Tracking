@@ -5,7 +5,6 @@ CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: ../sagan_plugin.cc
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/boost_161_condition_variable.h
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/boost_161_pthread_condition_variable.h
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/boost_161_pthread_condition_variable_fwd.h
-CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/ros/advertise_options.h
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/ros/advertise_service_options.h
 CMakeFiles/sagan_plugin.dir/sagan_plugin.cc.o: /opt/ros/kinetic/include/ros/assert.h

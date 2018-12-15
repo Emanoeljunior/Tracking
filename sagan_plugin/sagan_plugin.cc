@@ -10,7 +10,6 @@
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
 #include "std_msgs/Float32.h"
-#include "geometry_msgs/Quaternion.h"
 
 namespace gazebo
 {
@@ -39,23 +38,12 @@ namespace gazebo
 	  // Setup a P-controller, with a gain of 0.1.
 	  this->pid = common::PID(0.1, 0, 0);
 	
-	 this->BLW_joint = _model->GetJoints()[1];
- 	 this->FLW_joint = _model->GetJoints()[2];
- 	 this->BRW_joint = _model->GetJoints()[4];
- 	 this->FRW_joint = _model->GetJoints()[5];
+	 this->joint1 = _model->GetJoints()[1];
+ 
 
 	// Apply the P-controller to the joint1.
 	  this->model->GetJointController()->SetVelocityPID(
-	      this->BLW_joint->GetScopedName(), this->pid);
-		
-	 this->model->GetJointController()->SetVelocityPID(
-	      this->FLW_joint->GetScopedName(), this->pid);
-
-	 this->model->GetJointController()->SetVelocityPID(
-	      this->BRW_joint->GetScopedName(), this->pid);
-	
-	 this->model->GetJointController()->SetVelocityPID(
-	      this->FRW_joint->GetScopedName(), this->pid);
+	      this->joint1->GetScopedName(), this->pid);
 
 
 	// Default to zero velocity
@@ -76,7 +64,9 @@ namespace gazebo
 	// Create a topic name
 	std::string topicName = "~/" + this->model->GetName() + "/vel_cmd";
 
-	
+	// Subscribe to the topic, and register a callback
+	this->sub = this->node->Subscribe(topicName,
+	   &SaganPlugin::OnMsg, this);
 	// Initialize ros, if it has not already bee initialized.
 	if (!ros::isInitialized())
 	{
@@ -92,7 +82,7 @@ namespace gazebo
 
 	// Create a named topic, and subscribe to it.
 	ros::SubscribeOptions so =
-	  ros::SubscribeOptions::create<geometry_msgs::Quaternion>(
+	  ros::SubscribeOptions::create<std_msgs::Float32>(
 	      "/" + this->model->GetName() + "/vel_cmd",
 	      1,
 	      boost::bind(&SaganPlugin::OnRosMsg, this, _1),
@@ -108,33 +98,29 @@ namespace gazebo
 
 
     }
+	/// \brief Handle incoming message
+	/// \param[in] _msg Repurpose a vector3 message. This function will
+	/// only use the x component.
+	private: void OnMsg(ConstVector3dPtr &_msg)
+	{
+	  this->SetVelocity(_msg->x());
+	}
 	
 
 	/// \brief Set the velocity of the Sagan
 	/// \param[in] _vel New target velocity
-	public: void SetVelocity(const double _vel[4])
+	public: void SetVelocity(const double &_vel)
 	{
 	  // Set the joint's target velocity.
 	  this->model->GetJointController()->SetVelocityTarget(
-	      this->BLW_joint->GetScopedName(), _vel[0]);
-
-	 this->model->GetJointController()->SetVelocityTarget(
-	      this->FLW_joint->GetScopedName(), _vel[1]);
-
-	 this->model->GetJointController()->SetVelocityTarget(
-		this->BRW_joint->GetScopedName(), _vel[2]);
-
-	 this->model->GetJointController()->SetVelocityTarget(
-		this->FRW_joint->GetScopedName(), _vel[3]);
+	      this->joint1->GetScopedName(), _vel);
 	}
 	/// \brief Handle an incoming message from ROS
 	/// \param[in] _msg A float value that is used to set the velocity
 	/// of the Velodyne.
-	public: void OnRosMsg(const geometry_msgs::QuaternionConstPtr &msg)
+	public: void OnRosMsg(const std_msgs::Float32ConstPtr &_msg)
 	{
-	double vel[4]={msg->x,msg->y,msg->z,msg->w};
-	std::cout<<vel[0]<<" "<<vel[1]<<" "<<vel[2]<<" "<<vel[3]<<" ";
-	  this->SetVelocity(vel);
+	  this->SetVelocity(_msg->data);
 	}
 
 	/// \brief ROS helper function that processes messages
@@ -151,15 +137,8 @@ namespace gazebo
    	/// \brief Pointer to the model.
 	private: physics::ModelPtr model;
 
-	/// \brief Pointer to the BLW_joint.
-	private: physics::JointPtr BLW_joint;
-	/// \brief Pointer to the FLW_joint.
-	private: physics::JointPtr FLW_joint;
-	/// \brief Pointer to the BRW_joint.
-	private: physics::JointPtr BRW_joint;
-	/// \brief Pointer to the FRW_joint.
-	private: physics::JointPtr FRW_joint;
-	
+	/// \brief Pointer to the joint1.
+	private: physics::JointPtr joint1;
 	
 
 	/// \brief A PID controller for the joint.
